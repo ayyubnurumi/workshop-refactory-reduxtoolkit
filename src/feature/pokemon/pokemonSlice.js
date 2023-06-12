@@ -1,19 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const BASE_URL = "https://pokeapi.co/api/v2/";
+axios.defaults.baseURL = "https://pokeapi.co/api/v2/";
 
 export const getAllPokemon = createAsyncThunk(
   "pokemon/getAllPokemon",
   async () => {
-    return await axios.get(BASE_URL + "pokemon");
+    return await axios.get("pokemon");
   }
 );
 
 export const getDetailPokemon = createAsyncThunk(
   "pokemon/getDetailPokemon",
   async (name) => {
-    return await axios.get(BASE_URL + `pokemon/${name}`);
+    return await axios.get(`pokemon/${name}`);
   }
 );
 
@@ -60,12 +60,7 @@ export const pokemonSlice = createSlice({
         state.detailPokemon.weight = weight;
         state.detailPokemon.species = species;
       });
-    // builder.addCase(getDetailPokemon.rejected, (state) => {
-    //   state.allPokemon.isLoading = false;
-    // });
   },
 });
-
-// export const { } = pokemonSlice.actions;
 
 export default pokemonSlice.reducer;
