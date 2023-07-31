@@ -52,7 +52,7 @@ export const pokemonSlice = createSlice({
         state.allPokemon.isLoading = false;
       });
     builder.addCase(getDetailPokemon.pending, () => {
-      // state.allPokemon.isLoading = true;
+        // state.detailPokemon.isLoading = true;
     }),
       builder.addCase(getDetailPokemon.fulfilled, (state, action) => {
         const { types, weight, species } = action.payload.data;
